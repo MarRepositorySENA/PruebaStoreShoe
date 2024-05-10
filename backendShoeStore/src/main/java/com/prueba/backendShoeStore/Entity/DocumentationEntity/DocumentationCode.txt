@@ -1,0 +1,7 @@
+1. el id de ABaseEntity lo digite en String porque el mer solicita un char  en 36
+
+2. todas las entidades extienden atributos genericos de la entidad base, como estado y id.
+
+3.omito la definición de un constructor en algunas entidades porque son sencillas,  
+evitando código redundante y mejorando la legibilidad, porque son entidades que usare en paramet5rizacion, 
+de esta manera hago uso del constructor por defecto de java.
