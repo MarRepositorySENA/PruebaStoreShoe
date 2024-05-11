@@ -8,8 +8,6 @@ import com.prueba.backendShoeStore.Entity.Enum.Status;
 import jakarta.persistence.Column;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.MappedSuperclass;
 
@@ -21,7 +19,6 @@ public class ABaseEntity {
 //	@GeneratedValue(strategy =GenerationType.IDENTITY)
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "id", length = 36, unique = true, nullable=false)
 	private String id;
 

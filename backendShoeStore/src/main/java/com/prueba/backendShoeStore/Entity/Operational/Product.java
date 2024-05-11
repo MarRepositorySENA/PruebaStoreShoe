@@ -21,7 +21,7 @@ public class Product extends ABaseEntity {
 	@Column(name = "quantity")
 	private Integer quantity;
 
-	@Column(name = "price", precision = 2, scale = 1)
+	@Column(name = "price")
 	private BigDecimal price;
 
 	@Column(name = "vat_percentage", precision = 2)

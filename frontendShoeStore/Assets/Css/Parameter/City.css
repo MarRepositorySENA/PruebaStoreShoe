@@ -1,0 +1,56 @@
+.table tbody tr { 
+    border-bottom: 1px solid #dddddd; 
+    text-align: center;
+} 
+
+.table tbody tr:nth-of-type(even) { 
+    background-color: #e4e4e4; 
+} 
+    
+.table tbody tr:last-of-type { 
+    border-bottom: 2px solid #000000;
+}
+
+.btnDelete{
+    width: 40px;
+    height: 40px;
+    background: #ff0f08;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    font-weight: 100;
+    padding-top: 5px;
+    cursor: pointer;
+}
+
+.btnEdit{
+    width: 40px;
+    height: 40px;
+    background: #0888ff;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    font-weight: 100;
+    padding-top: 5px;
+    cursor: pointer;
+}
+
+.btnDelete:hover{
+    transform: scale(1.03);
+}
+
+.btnDelete:active{
+    transform: scale(0.98);
+}
+.upa {
+    font-size: 10px;
+    margin-left: 80%;
+    padding: 20px;
+}
+
+.upa-input {
+    margin-left: 75%;
+    font-size: 16px; /* Tamaño de fuente más grande para el input */
+    padding: 10px; /* Reducción del relleno para evitar que el texto se solape */
+    width: 200px; /* Ancho de la caja de texto */
+}

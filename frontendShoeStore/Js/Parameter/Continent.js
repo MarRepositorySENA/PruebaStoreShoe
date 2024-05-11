@@ -2,26 +2,22 @@
 // Busqueda por id
 function findById(id) {
     $.ajax({
-        url: 'http://localhost:9090/store/api/v1/store/operational/product/' + id,
+        url: 'http://localhost:9090/store/api/v1/store/parameter/continent/' + id,
         method: "GET",
         headers: {
             "Content-Type": "application/json"
         }
     }).done(function (item) {
         $("#id").val(item.id)
-        $("#nameProduct").val(item.nameProduct)
+        $("#nameContinent").val(item.name)
         $("#description").val(item.description)
-        $("#quantity").val(item.quantity)
-        $("#price").val(item.price)
-        $("#percentageVat").val(item.vatPercentaget)
-        $("#percentageDiscount").val(item.discountPercentage)
         $("#status").val(item.status == 'ACTIVO' ? '1' : '0')
     })
 }
 
 function loadTable() {
     $.ajax({
-        url: 'http://localhost:9090/store/api/v1/store/operational/product/',
+        url: 'http://localhost:9090/store/api/v1/store/parameter/continent/',
         method: "GET",
         headers: {
             "Content-Type": "application/json"
@@ -32,15 +28,11 @@ function loadTable() {
             registros += `
                         <tr class="table-light">
                             <td>`+ item.id + `</td>
-                            <td>`+ item.nameProduct + `</td>
+                            <td>`+ item.name + `</td>
                             <td>`+ item.description + `</td>
-                            <td>`+ item.quantity + `</td>
-                            <td>`+ item.price + `</td>
-                            <td>`+ item.vatPercentaget + ` %</td>
-                            <td>`+ item.discountPercentage + ` %</td>
                             <td>`+ (item.status === 'ACTIVO' ? 'Activo' : 'Inactivo') + `</td>
                             <td><button class="btnEdit" type="button" onclick="findById('`+item.id+`');" data-bs-toggle="modal"
-                            data-bs-target="#modalProduct"><i class="fi fi-rr-pencil"></i></button></td>
+                            data-bs-target="#modalContinent"><i class="fi fi-rr-pencil"></i></button></td>
                             <td><button class="btnDelete" type="button" onclick="deleteById('`+ item.id + `');"><i class="fi fi-rr-trash"></i></button></td>
                         </tr>
                         `;
@@ -63,7 +55,7 @@ function deleteById(id) {
     }).then((result) => {
         if (result.isConfirmed) {
             $.ajax({
-                url: 'http://localhost:9090/store/api/v1/store/operational/product/' + id,
+                url: 'http://localhost:9090/store/api/v1/store/parameter/continent/' + id,
                 method: "DELETE",
                 headers: {
                     "Content-Type": "application/json"
@@ -83,7 +75,7 @@ function deleteById(id) {
 
                 Toast.fire({
                     icon: 'success',
-                    title: 'Producto eliminado',
+                    title: 'Continente eliminado',
                 });
                 loadTable();
             })
@@ -98,12 +90,8 @@ function Save() {
     
     // Crear el objeto de datos a enviar
     var data = {
-        nameProduct: $("#nameProduct").val(),
+        name: $("#nameContinent").val(),
         description: $("#description").val(),
-        quantity: $("#quantity").val(),
-        price: $("#price").val(),
-        vatPercentaget: $("#percentageVat").val(),
-        discountPercentage: $("#percentageDiscount").val(),
         status: ($("#status").val() === '1') ? 'ACTIVO' : 'INACTIVO',
         createdAt: new Date(),
         updatedAt: new Date(),
@@ -114,7 +102,7 @@ function Save() {
     
     // Determinar si se debe realizar una solicitud POST o PUT
     var method = (id !== "") ? "PUT" : "POST";
-    var url = (id !== "") ? "http://localhost:9090/store/api/v1/store/operational/product/" + id : "http://localhost:9090/store/api/v1/store/operational/product/";
+    var url = (id !== "") ? "http://localhost:9090/store/api/v1/store/parameter/continent/" + id : "http://localhost:9090/store/api/v1/store/parameter/continent/";
 
     // Realizar la solicitud AJAX
     $.ajax({
@@ -156,71 +144,15 @@ function Save() {
     });
 }
 
-
-function filters(){
-
-    var url = 'http://localhost:9090/store/api/v1/store/operational/product/filters'
-
-    var name = $("#filterNameProduct").val();
-    if ($("#filterStatus").val() === '1'){
-        var status = 'ACTIVO';
-    }else if ($("#filterStatus").val() === '0'){
-        var status= 'INACTIVO';
-    }else {
-        url = 'http://localhost:9090/store/api/v1/store/operational/product/filters'
-    } ;
-
-    if (name || description || status) {
-        var data = {
-            nameProduct: name,
-            status: status
-        };
-
-        $.ajax({
-            url: url,
-            method: "GET",
-            data: data,
-            headers: {
-                "Content-Type": "application/json"
-            }
-        }).done(function (items) {
-            var registros = "";
-            items.forEach(function (item, index, array) {
-                registros += `
-                            <tr class="table-light">
-                                <td>`+ item.id + `</td>
-                                <td>`+ item.nameProduct + `</td>
-                                <td>`+ item.description + `</td>
-                                <td>`+ item.quantity + `</td>
-                                <td>`+ item.price + `</td>
-                                <td>`+ item.vatPercentaget + ` %</td>
-                                <td>`+ item.discountPercentage + ` %</td>
-                                <td>`+ (item.status == 'ACTIVO' ? 'Activo' : 'Inactivo') + `</td>
-                                <td><button class="btnEdit" type="button" onclick="findById('`+ item.id + `');" data-bs-toggle="modal"
-                                data-bs-target="#modalProduct"><i class="fi fi-rr-pencil"></i></button></td>
-                                <td><button class="btnDelete" type="button" onclick="deleteById('`+ item.id + `');"><i class="fi fi-rr-trash"></i></button></td>
-                            </tr>
-                            `;
-            })
-            $("#dataResult").html(registros);
-        });
-    } else {
-        loadTable();
-    }
-}
 //Accion de actualizar un registro
 function Update() {
     $.ajax({
-        url: 'http://localhost:9090/store/api/v1/store/operational/product/' + $("#id").val(),
+        url: 'http://localhost:9090/store/api/v1/store/parameter/continent/' + $("#id").val(),
         data: JSON.stringify({
            
 
-            nameProduct: $("#nameProduct").val(),
+            nameProduct: $("#nameCountry").val(),
             description: $("#description").val(),
-            quantity: $("#quantity").val(),
-            price: $("#price").val(),
-            vatPercentage: $("#vatPercentage").val(),
-            discountPercentage: $("#discountPercent").val(),
             status: parseInt($("#status").val())
         }),
         method: "PUT",
@@ -254,20 +186,11 @@ function Update() {
         clearData();
     })
 }
+
 // Función para limpiar datos
 function clearData() {
     $("#id").val("")
-    $("#nameProduct").val("")
+    $("#nameContinent").val("")
     $("#description").val("")
-    $("#quantity").val("")
-    $("#price").val("")
-    $("#percentageVat").val("")
-    $("#percentageDiscount").val("")
     $("#status").val("")
-}
-
-function cleanFilters(){
-    $("#filterNameProduct").val(""),
-    $("#filterDescription").val(""),
-    $("#filterStatus").val("")
 }
