@@ -5,3 +5,5 @@
 3.omito la definición de un constructor en algunas entidades porque son sencillas,  
 evitando código redundante y mejorando la legibilidad, porque son entidades que usare en paramet5rizacion, 
 de esta manera hago uso del constructor por defecto de java.
+
+4.realice entidades de parametrizacion solo hasta ciudad, porque era el requerimiento del mer en la entidad cliente, solicitaba ciudad

@@ -12,7 +12,7 @@ import com.prueba.backendShoeStore.IService.IBaseService.IBaseService;
 import com.prueba.backendShoeStore.Util.GlobalConstants;
 
 @Service
-public class BaseService<T> implements IBaseService<T> {
+public abstract class BaseService<T> implements IBaseService<T> {
 
 	@Autowired
 	private IBaseRepository<T, String> repositoryT;
@@ -23,7 +23,7 @@ public class BaseService<T> implements IBaseService<T> {
 
 	@Override
 	public List<T> findByStatusFalse() throws Exception {
-		return repositoryT.finfindByStatusFalse();
+		return repositoryT.findByStatusFalse();
 	}
 
 	@Override

@@ -1,12 +1,15 @@
 package com.prueba.backendShoeStore.Entity.BaseEntity;
 
 import java.time.LocalDateTime;
+import java.util.UUID;
 
 import com.prueba.backendShoeStore.Entity.Enum.Status;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.MappedSuperclass;
 
@@ -18,12 +21,13 @@ public class ABaseEntity {
 //	@GeneratedValue(strategy =GenerationType.IDENTITY)
 
 	@Id
-	@Column(name = "id", length = 36, unique = true)
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "id", length = 36, unique = true, nullable=false)
 	private String id;
 
 	@Enumerated(EnumType.STRING)
-	@Column(name = "state")
-	private Status state;
+	@Column(name = "status")
+	private Status status;
 
 	@Column(name = "created_at", nullable = false)
 	private LocalDateTime createdAt;
@@ -36,6 +40,8 @@ public class ABaseEntity {
 
 	// Constructor
 	public ABaseEntity() {
+		
+		this.id =UUID.randomUUID().toString();
 		this.createdAt = LocalDateTime.now();
 		this.updatedAt = LocalDateTime.now();
 		this.deletedAt = null;
@@ -50,12 +56,14 @@ public class ABaseEntity {
 		this.id = id;
 	}
 
-	public Status getState() {
-		return state;
+	
+
+	public Status getStatus() {
+		return status;
 	}
 
-	public void setState(Status state) {
-		this.state = state;
+	public void setStatus(Status status) {
+		this.status = status;
 	}
 
 	public LocalDateTime getCreatedAt() {

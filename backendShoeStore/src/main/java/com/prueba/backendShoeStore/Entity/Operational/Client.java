@@ -14,11 +14,11 @@ import jakarta.persistence.Table;
 @Table(name="client")
 public class Client extends ABaseEntity {
 	
-		@ManyToOne(fetch = FetchType.LAZY, optional = false)
+		@ManyToOne(fetch = FetchType.EAGER, optional = false)
 		@JoinColumn(name = "person_id", nullable = false, unique = true)
 		private Person person;
 		
-		@ManyToOne(fetch = FetchType.LAZY, optional = false)
+		@ManyToOne(fetch = FetchType.EAGER, optional = false)
 		@JoinColumn(name = "city_id", nullable = false, unique = true)
 		private City city;
 

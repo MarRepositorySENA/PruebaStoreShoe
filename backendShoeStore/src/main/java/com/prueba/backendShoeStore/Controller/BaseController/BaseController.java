@@ -81,12 +81,12 @@ public class BaseController<T> {
 		serviceT.delete(id);
 	}
 
-	@Operation(summary = "Eliminar registro por id", responses = {
-			@ApiResponse(responseCode = "200", description = "Estado "),
-			@ApiResponse(responseCode = "404", description = " no encontrado ") })
+	@Operation(summary = "Buscar registros inactivos por estado", responses = {
+			@ApiResponse(responseCode = "200", description = "lista de estados inacivos "),
+			@ApiResponse(responseCode = "404", description = " registros no encontrado ") })
 
 	@GetMapping("registros_inactivos")
-	public List<T> findByStateFalse() throws Exception {
+	public List<T> findByStatusFalse() throws Exception {
 		return serviceT.findByStatusFalse();
 	}
 

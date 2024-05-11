@@ -1,0 +1,3 @@
+1. se creo una interfas generica para que las demas interfaces heredaran las misma, evitando duplicidad de codigo, permitiendo que sea un punto de partida para las demas interfaces
+
+2. implemente el @NoRepositoryBean porque la interfaz generica no nesecita ser instanciada por los metodos 	

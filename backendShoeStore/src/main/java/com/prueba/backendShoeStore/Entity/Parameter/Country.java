@@ -19,7 +19,7 @@ public class Country extends ABaseEntity {
 	@Column(name = "description", nullable = false)
 	private String description;
 
-	@ManyToOne(fetch = FetchType.LAZY, optional = false)
+	@ManyToOne(fetch = FetchType.EAGER, optional = false)
 	@JoinColumn(name = "continent_id", nullable = false)
 	private Continent continent;
 

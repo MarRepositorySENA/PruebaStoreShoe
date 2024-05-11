@@ -19,7 +19,7 @@ public class City extends ABaseEntity {
 	@Column(name = "description", nullable = false)
 	private String description;
 
-	@ManyToOne(fetch = FetchType.LAZY, optional = false)
+	@ManyToOne(fetch = FetchType.EAGER, optional = false)
 	@JoinColumn(name = "department_id", nullable = false)
 	private Department department;
 

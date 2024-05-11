@@ -30,11 +30,11 @@ public class DescriptionSale extends ABaseEntity{
 	private BigDecimal subtotal;
 	
 	
-	@ManyToOne(fetch = FetchType.LAZY, optional = false)
+	@ManyToOne(fetch = FetchType.EAGER, optional = false)
 	@JoinColumn(name = "sale_id", nullable = false, unique = true)
 	private Sale sale;
 	
-	@ManyToOne(fetch = FetchType.LAZY, optional = false)
+	@ManyToOne(fetch = FetchType.EAGER, optional = false)
 	@JoinColumn(name = "product_id", nullable = false, unique = true)
 	private Product product;
 

@@ -8,5 +8,5 @@ import java.util.List;
 @NoRepositoryBean
 public interface IBaseRepository<T,ID> extends JpaRepository<T, String> {
 
-	List<T> finfindByStatusFalse();
+	List<T> findByStatusFalse();
 }

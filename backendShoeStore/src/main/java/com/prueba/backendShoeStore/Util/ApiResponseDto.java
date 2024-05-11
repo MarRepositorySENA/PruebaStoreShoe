@@ -2,6 +2,8 @@ package com.prueba.backendShoeStore.Util;
 
 public class ApiResponseDto<T> {
 
+	
+	//este documento permite mostrar las respuesta de las apis de una manera mas organizada por decirlo asi, donde toma mensaje, estado, data del body de la respuesta
 	private Boolean status;
     private T data;
     private String message;
